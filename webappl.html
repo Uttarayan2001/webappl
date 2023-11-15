@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Student Registration</h2>
+
+    <form id="registrationForm">
+        <label for="rollNumber">Roll Number:</label>
+        <input type="text" id="rollNumber" name="rollNumber" required>
+
+        <label for="studentName">Name:</label>
+        <input type="text" id="studentName" name="studentName" required>
+
+        <button type="button" onclick="registerStudent()">Register</button>
+    </form>
+
+    <h2>Registered Students</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Roll Number</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Table content will be dynamically added here -->
+        </tbody>
+    </table>
+
+    <script>
+        function registerStudent() {
+            // Get values from the form
+            var rollNumber = document.getElementById('rollNumber').value;
+            var studentName = document.getElementById('studentName').value;
+
+            // Create a new table row
+            var table = document.getElementById('studentTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow(table.rows.length);
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+
+            // Populate the row with data
+            cell1.innerHTML = rollNumber;
+            cell2.innerHTML = studentName;
+
+            // Clear the form fields
+            document.getElementById('rollNumber').value = '';
+            document.getElementById('studentName').value = '';
+        }
+    </script>
+
+</body>
+</html>
